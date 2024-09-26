@@ -22,8 +22,10 @@ class TestAdditionWorksheet(unittest.TestCase):
         worksheet = AdditionWorksheet(num_problems=10)
         problems = worksheet.generate_problems()
         for problem in problems:
-            # Extract numbers from the problem string by removing spaces
-            a, b = map(int, problem.replace(" ", "").split('+'))
+            # Clean up the problem string by removing extra spaces and the equal sign
+            a, b = problem.split('+')
+            a = int(a.strip())
+            b = int(b.replace('=', '').strip())
             self.assertGreaterEqual(a, 0)
             self.assertLessEqual(a, 100)
             self.assertGreaterEqual(b, 0)
