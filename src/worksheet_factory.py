@@ -1,4 +1,5 @@
 from src.addition_worksheet import AdditionWorksheet
+from src.subtraction_worksheet import SubtractionWorksheet
 
 class WorksheetFactory:
     """Factory class to handle the creation of different types of worksheets."""
@@ -9,7 +10,7 @@ class WorksheetFactory:
         Factory method to return the appropriate worksheet object based on the type.
         
         Args:
-            worksheet_type (str): The type of worksheet (e.g., "addition").
+            worksheet_type (str): The type of worksheet (e.g., "addition", "subtraction").
             num_problems (int): The number of problems for the worksheet.
         
         Returns:
@@ -20,5 +21,7 @@ class WorksheetFactory:
         """
         if worksheet_type == "addition":
             return AdditionWorksheet(num_problems)
+        elif worksheet_type == "subtraction":
+            return SubtractionWorksheet(num_problems)
         else:
             raise ValueError(f"Unsupported worksheet type: {worksheet_type}")
